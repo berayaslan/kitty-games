@@ -3,19 +3,19 @@ import pygame
 import math
 import random
 
-pygame.init() #pygamein tum etkinlerini aktiflestirmaek
+pygame.init() 
 
-screen = pygame.display.set_mode((800,600)) #oyunun ekranini -800 yukaridan asagi- olusturduk 
+screen = pygame.display.set_mode((800,600))
 
 #baslik ve logo
-pygame.display.set_caption("kitty games") #oyunun adi
-icon = pygame.image.load('logo.png') #logoyu yukledik ve icona attik
-pygame.display.set_icon(icon) #icon degiskenini ayarladik
+pygame.display.set_caption("kitty games") 
+icon = pygame.image.load('logo.png')
+pygame.display.set_icon(icon) 
 
 #oyuncu
 playerImg = pygame.image.load('cat.png')
-playerX = 370 # yandan
-playerY= 480 #yukaridan asagi
+playerX = 370 
+playerY= 480 
 playerX_change=0
 
 #arkaplan
@@ -59,10 +59,10 @@ def show_Score(x,y):
     screen.blit(score,(x,y))
 
 def player(x,y):
-    screen.blit(playerImg,(x,y)) #blit cizmek anlamina geliyor
+    screen.blit(playerImg,(x,y)) 
 
-def enemy(x,y,i): #dusmanin karakterini yerlestirdik
-    screen.blit(enemyImg[i],(x,y)) #blit cizmek anlamina geliyor
+def enemy(x,y,i): 
+    screen.blit(enemyImg[i],(x,y))
 
 def fire_bullet(x,y):
     global bullet_state
@@ -78,48 +78,47 @@ def is_Collision(enemyX,enemyY,bulletX,bulletY):
 
 #game dongusu
 running = True
-while running: #uygulama calisirken
+while running: 
 
     # RGB = RED - GREEN - BLUE
-    # screen.fill((255, 102, 153)) #pembe renk kodlariyla doldur
     screen.blit(background,(0,0))
-    for event in pygame.event.get(): #eventin aldigi degerlere bak
-        if event.type == pygame.QUIT: #eger quite esitse
-            running = False #false yap ve cik
+    for event in pygame.event.get(): 
+        if event.type == pygame.QUIT: 
+            running = False 
 
-        # klavyeden tusun basildigini kontrol etme saga ya da sola
-        if event.type== pygame.KEYDOWN: # herhangi bir tusa basilinca
-            if event.key == pygame.K_a: # a tusuna basinca bunu yap
+     
+        if event.type== pygame.KEYDOWN:
+            if event.key == pygame.K_a: 
                 playerX_change=-2.5
-            if event.key == pygame.K_d: # d tusuna basinca bunu yap
+            if event.key == pygame.K_d:
                 playerX_change=2.5
             if event.key == pygame.K_SPACE:
                 if bullet_state is "ready":
-                    # eger mermi zaten havadaysa ates etme
+                    
                     bulletX = playerX
                     fire_bullet(bulletX,bulletY)
 
 
 
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_a or event.key == pygame.K_d: # tus esittir bunlardan biri
+            if event.key == pygame.K_a or event.key == pygame.K_d: 
                 playerX_change=0
 
     
-    playerX+=playerX_change # degismis halini eski haline ekle
+    playerX+=playerX_change 
 
-    if playerX<= 0: #kenar cizgisi
+    if playerX<= 0: 
         playerX=0
-    elif playerX>=720: # aradaki piksel farkindan dolayi
+    elif playerX>=720:
         playerX=720
 
     #dusman hareketleri
-    enemyY+=enemyY_change # degismis halini eski haline ekle
+    enemyY+=enemyY_change 
     for i in range(num_of_enemies):
-        if enemyY[i]<= 0: #kenar cizgisi
+        if enemyY[i]<= 0:
             enemyX_change[i]=0
             enemyY[i]+=enemyY_change[i]
-        elif enemyY[i]>=720: # aradaki piksel farkindan dolayi
+        elif enemyY[i]>=720:
             enemyX_change[i]=-2
             enemyY[i]+=enemyY_change[i]
 
@@ -132,7 +131,7 @@ while running: #uygulama calisirken
             enemyX[i] = random.randint(0,720)
             enemyY[i] = random.randint(50,150)
         
-        enemy(enemyX[i],enemyY[i],i) #fonksiyonu cagirdik
+        enemy(enemyX[i],enemyY[i],i)
 
 
     #mermi hareketleri
@@ -145,6 +144,6 @@ while running: #uygulama calisirken
         bulletY-=bulletY_change
     
 
-    player(playerX,playerY) #fonksiyonu cagirdik
+    player(playerX,playerY) 
     show_Score(textX,textY)
-    pygame.display.update() # bir kodu onceden yazdiktan sonra degistirmek icin bunu yazmaliyiz
+    pygame.display.update() 
