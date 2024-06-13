@@ -1,6 +1,3 @@
-[Screenshot_2]###(https://github.com/berayaslan/kitty-games/assets/108027930/effe7b8b-d453-4f40-845b-ca612a4a3687)
-
-
 # Kitty Games Project Report
 
 ## Introduction
