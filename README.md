@@ -4,6 +4,8 @@
 
 Kitty Games is a whimsical take on the classic spaceship game, Warspace, reimagined with a fun and engaging cat-themed twist. This project was developed using Python and the Pygame library, resulting in a simple yet entertaining game that appeals to cat lovers and gaming enthusiasts alike.
 
+![Screenshot_1](https://github.com/berayaslan/kitty-games/assets/108027930/74ab0782-d797-4b94-8c80-a07e5f4e73d1)
+
 ## Project Overview
 
 In Kitty Games, players control a cat spaceship navigating through various obstacles and enemies. The objective is to survive as long as possible while collecting power-ups and achieving high scores. The game combines the thrill of space adventure with the charm of adorable feline characters, creating a unique gaming experience.
